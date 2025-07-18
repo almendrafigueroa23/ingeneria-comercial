@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Malla Curricular Interactiva</title>
+<style>
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom, #fdf6f9, #f7ecf8);
+    color: #4a4a4a;
+    padding: 20px;
+  }
+  h1 {
+    color: #a074af;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  .columna {
+    background-color: #f8e1eb;
+    border: 2px solid #e7cce0;
+    border-radius: 15px;
+    padding: 10px;
+  }
+  .columna:nth-child(even) {
+    background-color: #edd6ef;
+  }
+  .columna h2 {
+    text-align: center;
+    color: #a074af;
+  }
+  .materia {
+    background-color: rgba(255,255,255,0.8);
+    border: 1px solid #e7cce0;
+    border-radius: 10px;
+    padding: 6px 10px;
+    margin: 4px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .materia:hover {
+    background-color: #f4d6e4;
+  }
+  .materia.completada {
+    text-decoration: line-through;
+    background-color: #cbead9 !important;
+    color: #666;
+  }
+  .materia.bloqueada {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+</style>
+</head>
+<body>
+
+<h1>Malla Curricular Interactiva</h1>
+
+<div class="grid">
+  <div class="columna">
+    <h2>Año 1</h2>
+    <div class="materia" id="matematicaylogica">Matemática y Pensamiento Lógico (S1)</div>
+    <div class="materia" id="contaorg">Contabilidad para las Organizaciones (S1)</div>
+    <div class="materia" id="ingles1">Inglés I (S1)</div>
+    <div class="materia" id="adminorg">Administración de Organizaciones (S1)</div>
+    <div class="materia" id="herramientas">Herramientas Digitales para la Gestión (S1)</div>
+    <div class="materia" id="cursofg1">Curso Formación General (S1)</div>
+    <div class="materia bloqueada" id="matneg1" data-req="matematicaylogica">Matemáticas para los Negocios I (S2)</div>
+    <div class="materia bloqueada" id="contafin" data-req="contaorg">Contabilidad Financiera (S2)</div>
+    <div class="materia bloqueada" id="ingles2" data-req="ingles1">Inglés II (S2)</div>
+    <div class="materia bloqueada" id="funcger" data-req="adminorg">Funciones Gerenciales (S2)</div>
+    <div class="materia bloqueada" id="herravanzadas" data-req="herramientas">Herramientas Digitales Avanzadas (S2)</div>
+    <div class="materia" id="cursofg2">Curso Formación General (S2)</div>
+  </div>
+
+  <div class="columna">
+    <h2>Año 2</h2>
+    <div class="materia bloqueada" id="matneg2" data-req="matneg1">Matemáticas para los Negocios II (S1)</div>
+    <div class="materia bloqueada" id="contadec" data-req="contafin">Contabilidad para la Toma de Decisiones (S1)</div>
+    <div class="materia bloqueada" id="ingles3" data-req="ingles2">Inglés III (S1)</div>
+    <div class="materia" id="analisecon">Análisis Económico (S1)</div>
+    <div class="materia" id="derechocom">Derecho Comercial (S1)</div>
+    <div class="materia" id="cursofg3">Curso Formación General (S1)</div>
+    <div class="materia bloqueada" id="analidatos1" data-req="matneg1">Análisis de Datos I (S2)</div>
+    <div class="materia bloqueada" id="analifin" data-req="contaorg">Análisis Financiero (S2)</div>
+    <div class="materia bloqueada" id="gestionper" data-req="funcger">Gestión de Personas (S2)</div>
+    <div class="materia bloqueada" id="analimicro" data-req="matematicaylogica,analisecon">Análisis Microeconómico (S2)</div>
+    <div class="materia" id="derecholab">Derecho Laboral (S2)</div>
+    <div class="materia" id="cursofg4">Curso Formación General (S2)</div>
+  </div>
+
+  <div class="columna">
+    <h2>Año 3</h2>
+    <div class="materia bloqueada" id="analidatos2" data-req="analidatos1">Análisis de Datos II (S1)</div>
+    <div class="materia bloqueada" id="mercap" data-req="analifin">Mercado de Capitales (S1)</div>
+    <div class="materia bloqueada" id="gestestraper" data-req="gestionper">Gestión Estratégica de Personas (S1)</div>
+    <div class="materia bloqueada" id="microapl" data-req="analimicro">Microeconomía Aplicada (S1)</div>
+    <div class="materia bloqueada" id="marketing" data-req="funcger">Marketing (S1)</div>
+    <div class="materia" id="cursofg5">Curso Formación General (S1)</div>
+    <div class="materia" id="practicainter">Práctica Intermedia (S2)</div>
+    <div class="materia bloqueada" id="econometria" data-req="analidatos2">Econometría (S2)</div>
+    <div class="materia bloqueada" id="analimacro" data-req="matematicaylogica,analisecon">Análisis Macroeconómico (S2)</div>
+    <div class="materia bloqueada" id="investmerc" data-req="marketing,analidatos1">Investigación de Mercado (S2)</div>
+    <div class="materia" id="cursofg6">Curso Formación General (S2)</div>
+  </div>
+
+  <div class="columna">
+    <h2>Año 4</h2>
+    <div class="materia bloqueada" id="financorp" data-req="mercap">Finanzas Corporativas (S1)</div>
+    <div class="materia" id="fundempr">Fundamentos de Emprendimiento (S1)</div>
+    <div class="materia bloqueada" id="comportorg" data-req="gestestraper">Comportamiento Organizacional (S1)</div>
+    <div class="materia bloqueada" id="macroapl" data-req="analimicro">Macroeconomía Aplicada (S1)</div>
+    <div class="materia bloqueada" id="marketestr" data-req="marketing">Marketing Estratégico (S1)</div>
+    <div class="materia" id="derechotrib">Derecho Tributario (S1)</div>
+    <div class="materia bloqueada" id="emprendimiento" data-req="fundempr">Emprendimiento (S2)</div>
+    <div class="materia" id="gestioncambio">Gestión del Cambio (S2)</div>
+    <div class="materia" id="formulacionproy">Formulación y Evaluación de Proyectos (S2)</div>
+    <div class="materia bloqueada" id="habildir" data-req="comportorg">Habilidades Directivas (S2)</div>
+    <div class="materia" id="gestoper">Gestión de Operaciones y Procesos (S2)</div>
+    <div class="materia" id="gestorgsocial">Gestión de Organizaciones Sociales (S2)</div>
+  </div>
+
+  <div class="columna">
+    <h2>Año 5</h2>
+    <div class="materia" id="gestestratorg">Gestión Estratégica de Organizaciones (S1)</div>
+    <div class="materia bloqueada" id="innosocial" data-req="fundempr">Innovación Social y Emprendimiento (S1)</div>
+    <div class="materia" id="controlgest">Control de Gestión (S1)</div>
+    <div class="materia" id="eticaorg">Ética en las Organizaciones (S1)</div>
+    <div class="materia" id="optativo1">Optativo (S1)</div>
+    <div class="materia" id="optativo2">Optativo (S1)</div>
+    <div class="materia" id="practicaprof">Práctica Profesional (S2)</div>
+    <div class="materia" id="graduacion">Actividad de Graduación: Juego de Negocios (S2)</div>
+  </div>
+</div>
+
+<script>
+const materias = document.querySelectorAll('.materia');
+
+materias.forEach(materia => {
+  materia.addEventListener('click', () => {
+    if (materia.classList.contains('bloqueada')) return;
+
+    materia.classList.toggle('completada');
+
+    materias.forEach(m => {
+      const req = m.getAttribute('data-req');
+      if (req) {
+        const reqs = req.split(',');
+        const allOk = reqs.every(id => document.getElementById(id).classList.contains('completada'));
+        if (allOk) {
+          m.classList.remove('bloqueada');
+        } else {
+          m.classList.add('bloqueada');
+          m.classList.remove('completada');
+        }
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>
